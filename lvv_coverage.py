@@ -99,17 +99,6 @@ def convertToUniqueList(x):
 class VerificationElement(dict):
     """Hold information relevant to a verification element"""
 
-    #def getTestCaseKeys(self, test_cases):
-    #    search = [np.isin(self.get('key'), test_cases[key].getVerificationElementKeys())[0] for key in test_cases]
-    #    # [test_cases[key].getVerificationElementKeys() for key in test_cases]
-    #    return np.array(test_cases.keys())[search].tolist()
-
-    #def getTestCycles(test_cycles):
-    #    pass
-        
-    #def getTestPlans(test_plans):
-    #    pass
-    
     def __init__(self, *args, **kwargs):
         super(VerificationElement, self).__init__(*args, **kwargs)
         self.testCaseKeys = []
