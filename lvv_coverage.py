@@ -6,72 +6,8 @@ import requests
 import jira
 from jira import JIRA
 import numpy as np
-from collections import OrderedDict
+from collections import OrderedDict        
 
-"""
-jira = JIRA("https://jira.lsstcorp.org")
-
-query = 'issuetype = Verification AND project = "LSST Verification and Validation" AND labels = "CommissioningSV" AND "Requirement ID" ~ OSS ORDER BY  "Requirement ID"'
-issues = jira.search_issues(query, 
-                            maxResults=10000)
-"""
-
-#parser.feed(issues[3].fields.customfield_15106)
-
-#base_url = "https://jira.lsstcorp.org"
-#api_endpoint = "/rest/atm/1.0"
-
-#username='kbechtol'
-#password='something'
-
-"""
-#url = f"{base_url}{api_endpoint}/testrun/{test_cycle_key}/testcase/{test_case_key}/testresult"
-#url = 'https://jira.lsstcorp.org/rest/atm/1.0/testplan/search/?query=projectKey = "LVV" AND folder = "/Project Systems Engineering/Archive Commissioning Science Verification"'
-
-# Test Cases
-
-
-# Test Cycles
-#url = 'https://jira.lsstcorp.org/rest/atm/1.0/testrun/search/?query=projectKey%20=%20%22LVV%22%20AND%20folder%20=%20%22/Project%20Systems%20Engineering/Commissioning%20Science%20Verification%22'
-
-# Test Plans
-#url = 'https://jira.lsstcorp.org/rest/atm/1.0/testplan/search/?query=projectKey%20=%20%22LVV%22%20AND%20folder%20=%20%22/Project%20Systems%20Engineering/Archive%20Commissioning%20Science%20Verification%22'
-
-# Set the request headers
-headers = {
-    "Content-Type": "application/json",
-}
-
-# Make the API request
-response = requests.get(
-    url,
-    auth=(username, password),
-    headers=headers,
-)
-
-results = response.json()
-"""
-
-#def searchInLists(x, search):
-    
-# Precompute step
-#test_case_search = {}
-#for key in test_cases.keys()
-#    test_case_search[key] = test_cases[key].getVerificationElementKeys()
-
-#results = {}
-#for key in verification_elements.keys()
-#    results[key] = [k for ]
-
-
-#search = [test_cases[key].getVerificationElementKeys() for key in test_cases]
-#np.array([key for key in test_cases.keys()])
-
-#for verification_element_key in verification_elements.keys():
-#    for test_case_key in test_cases.keys():
- 
-# Goal: return the test case keys         
-    
 
 def getVerificationElements():
     jira_client = JIRA("https://jira.lsstcorp.org")
@@ -331,49 +267,3 @@ class TestPlan(dict):
             except KeyError:
                 print('WARNING: no test cycle %s'%(key))
         return test_cycles
-        
-
-        
-
-
-# Test cases
-# 'key': 'LVV-T259',
-# Links to verification elements
-# 'issueLinks': ['LVV-11302', 'LVV-11300']
-
-# Test cycles
-# 'key': 'LVV-C66',
-# Links to test cases
-# 'items': [{'executedBy': None,
-#   'actualEndDate': None,
-#   'testCaseKey': 'LVV-T546',
-#   'id': 526,
-#   'assignedTo': 'danielsf',
-#   'status': 'Not Executed'},
-#  {'executedBy': None,
-#   'actualEndDate': None,
-#   'testCaseKey': 'LVV-T543',
-#   'id': 519,
-#   'assignedTo': 'danielsf',
-#   'status': 'Not Executed'}],
-
-# Test plans
-# key': 'LVV-P2',
-# Links to test cycles
-# 'testRuns': [{'estimatedTime': 0,
-#   'updatedBy': 'kbechtol',
-#   'issueKey': 'LVV-1544',
-#   'description': 'Initial verification of the single-visit performance of ComCam with respect to<ol><li>Delivered image quality</li><li>Photometric performance</li><li>Astrometric performance</li><li>Image depth</li></ol><br>The nominal planned on-sky observations for this test are 20 fields x 5 epochs x 5 visits x 6 filters = 3K visits (~4 nights of observations)<ul><li>Several of the fields should contain absolute spectrophotometric calibration standards.</li><li>The fields should cover a range of airmasses and source densities.</li></ul><br>These same observations are planned to be <a href="https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C6">repeated with LSSTCam</a> to enable verification tests across the full focal plane.',
-#   'updatedOn': '2019-05-21T18:32:13.000Z',
-#   'createdOn': '2018-08-29T06:26:41.000Z',
-#   'issueCount': 0,
-#   'plannedEndDate': '2018-08-29T06:26:30.000Z',
-#   'executionTime': 0,
-#   'projectKey': 'LVV',
-#   'testCaseCount': 25,
-#   'folder': '/Project Systems Engineering/Commissioning Science Verification',
-#   'plannedStartDate': '2018-08-29T06:26:30.000Z',
-#   'createdBy': 'kbechtol',
-#   'name': 'Commissioning SV: Single-visit Performance w/ ComCam',
-#   'key': 'LVV-C4',
-#   'status': 'Not Executed'},
