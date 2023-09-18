@@ -97,20 +97,23 @@ def convertToUniqueList(x):
 
 
 class VerificationElement(dict):
-    """Hold information relevant to a verification element"""
+    """Dictionary-like object to hold traceability, coverage, and other information for a verification element."""
 
     def __init__(self, *args, **kwargs):
         super(VerificationElement, self).__init__(*args, **kwargs)
         self.testCaseKeys = []
     
     def addTestCaseKey(self, key):
+        """Add key [str] for a test case associated with this verification element."""
         if key not in self.testCaseKeys:
             self.testCaseKeys.append(key)
     
     def getTestCaseKeys(self):
+        """Return a list of [str] of associated test case keys."""
         return self.testCaseKeys
 
     def getTestCycleKeys(self, test_cases):
+        """Return a unique list of [str] of associated test cycle keys."""
         test_cycle_keys = []
         for key in self.getTestCaseKeys():
             try:
@@ -121,6 +124,7 @@ class VerificationElement(dict):
         return convertToUniqueList(test_cycle_keys)
     
     def getTestPlanKeys(self, test_cases, test_cycles):
+        """Return a unique list of [str] of associated test plan keys."""
         test_case_keys = self.getTestCaseKeys()
         
         test_plan_keys = []
@@ -134,7 +138,7 @@ class VerificationElement(dict):
 
 
 class TestCase(dict):
-    """Hold information relevant to a Test Case"""
+    """Dictionary-like object to hold traceability, coverage, and other information for a test case."""
     
     def __init__(self, *args, **kwargs):
         super(TestCase, self).__init__(*args, **kwargs)
@@ -172,7 +176,7 @@ class TestCase(dict):
 
 
 class TestCycle(dict):
-    """Hold information relevant to a Test Cycle"""
+    """Dictionary-like object to hold traceability, coverage, and other information for a test cycle."""
     
     def __init__(self, *args, **kwargs):
         super(TestCycle, self).__init__(*args, **kwargs)
@@ -215,7 +219,7 @@ class TestCycle(dict):
         
     
 class TestPlan(dict):
-    """Hold information relevant to a Test Plan"""
+    """Dictionary-like object to hold traceability, coverage, and other information for a test plan."""
     
     def getTestCycleKeys(self):
         test_cycle_keys = []

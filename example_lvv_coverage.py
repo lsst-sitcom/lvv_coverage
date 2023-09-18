@@ -49,7 +49,7 @@ for key in test_plans:
             print('\tWARNING: no verification element %s'%(verification_element_key))
 
 
-# Walk the hierarchy to fill in coverage
+# Walk the hierarchy to fill in coverage information
 for key in test_cases:
     verification_elements = test_cases[key].setVerificationElementCoverage(verification_elements)
 for key in test_cycles:
